@@ -1,14 +1,14 @@
 {
-  "name": "webpack-intro",
+  "name": "bear-watcher",
   "version": "1.0.0",
-  "description": "",
+  "description": "A site scientists and park rangers can use to track bears in the Katmai National Park congregate",
   "main": "src/javascripts/main.js",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production --module-bind js=babel-loader"
   },
   "keywords": [],
-  "author": "",
+  "author": "Albert Chittaphong",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "7.11.4",
