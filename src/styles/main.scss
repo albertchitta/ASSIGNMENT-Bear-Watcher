@@ -2,8 +2,39 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 body {
-  background-color: antiquewhite;
-  color: brown;
+  background-color: rgb(240, 235, 235);
+  justify-content: center;
+}
+
+#jumbotron {
+  margin: 0 auto;
   text-align: center;
-  margin-top: 100px;
+}
+
+#bearForm {
+  margin: 0 auto;
+  justify-content: center;
+  max-width: 50rem;
+}
+
+.card-title {
+  text-align: center;
+}
+
+#nameErrorMessage,
+#urlErrorMessage {
+  text-align: center;
+  color: red;
+}
+
+#river {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: center;
+  max-width: 100rem;
+}
+
+.bear-card {
+  margin: 50px 5px;
 }
