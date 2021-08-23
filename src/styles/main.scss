@@ -28,13 +28,14 @@ body {
 }
 
 #river {
+  border: solid 2px black;
   display: flex;
   flex-wrap: wrap;
-  margin: 0 auto;
+  margin: 32px auto;
   justify-content: center;
-  max-width: 100rem;
+  max-width: 75rem;
 }
 
 .bear-card {
-  margin: 50px 5px;
+  margin: 5px;
 }
