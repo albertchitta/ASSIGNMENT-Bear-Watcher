@@ -1,6 +1,6 @@
 import river from '../../components/river';
 import { nameErrorMessage, urlErrorMessage } from '../errorMessage';
-// import renderToDOM from '../renderToDom';
+import { getDate } from '../date';
 
 const bears = [];
 
@@ -33,6 +33,7 @@ const addCatchAttempt = (e) => {
     if (e.target.id === `catchAttemptBtn-${bear.id}`) {
       // eslint-disable-next-line no-param-reassign
       bear.attempts += 1;
+      getDate();
       river(bears);
     }
   });
