@@ -1,5 +1,6 @@
 import river from '../../components/river';
 import { nameErrorMessage, urlErrorMessage } from '../errorMessage';
+// import renderToDOM from '../renderToDom';
 
 const bears = [];
 
@@ -10,8 +11,11 @@ const addBearToArray = (e) => {
 
     if (bearName.value && bearUrl.value) {
       bears.push({
+        id: bears.length,
         name: bearName.value,
-        url: bearUrl.value
+        url: bearUrl.value,
+        attempts: 0,
+        catches: 0
       });
 
       nameErrorMessage(bearName.value);
@@ -24,4 +28,24 @@ const addBearToArray = (e) => {
   }
 };
 
-export default addBearToArray;
+const addCatchAttempt = (e) => {
+  bears.forEach((bear) => {
+    if (e.target.id === `catchAttemptBtn-${bear.id}`) {
+      // eslint-disable-next-line no-param-reassign
+      bear.attempts += 1;
+      river(bears);
+    }
+  });
+};
+
+const addSuccessfulCatch = (e) => {
+  bears.forEach((bear) => {
+    if (e.target.id === `successfulCatchBtn-${bear.id}`) {
+      // eslint-disable-next-line no-param-reassign
+      bear.catches += 1;
+      river(bears);
+    }
+  });
+};
+
+export { addBearToArray, addCatchAttempt, addSuccessfulCatch };
