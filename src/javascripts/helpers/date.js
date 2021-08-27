@@ -12,8 +12,8 @@ const getDate = () => {
 
 const getTime = () => {
   const time = new Date();
-  const hour = time.getHours();
-  const minutes = time.getMinutes();
+  const hour = time.getHours() < 10 ? `0${time.getHours()}` : time.getHours();
+  const minutes = time.getMinutes() < 10 ? `0${time.getMinutes()}` : time.getMinutes();
   const fullTime = `${hour}:${minutes}`;
 
   return fullTime;

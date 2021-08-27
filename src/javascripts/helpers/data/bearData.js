@@ -1,8 +1,11 @@
 import river from '../../components/river';
 import { nameErrorMessage, urlErrorMessage } from '../errorMessage';
-import { getDate } from '../date';
+import { getDate, getTime } from '../date';
+// import fattestBear from '../../components/fattestBear';
+import compareCatches from '../compareCatches';
+import bears from './bears';
 
-const bears = [];
+// const bears = [];
 
 const addBearToArray = (e) => {
   if (e.target.id === 'submitBtn') {
@@ -15,7 +18,11 @@ const addBearToArray = (e) => {
         name: bearName.value,
         url: bearUrl.value,
         attempts: 0,
-        catches: 0
+        catches: 0,
+        attemptDate: 'No data',
+        attemptTime: ' this time',
+        catchDate: 'No data',
+        catchTime: ' this time'
       });
 
       nameErrorMessage(bearName.value);
@@ -33,7 +40,10 @@ const addCatchAttempt = (e) => {
     if (e.target.id === `catchAttemptBtn-${bear.id}`) {
       // eslint-disable-next-line no-param-reassign
       bear.attempts += 1;
-      getDate();
+      // eslint-disable-next-line no-param-reassign
+      bear.attemptDate = getDate();
+      // eslint-disable-next-line no-param-reassign
+      bear.attemptTime = getTime();
       river(bears);
     }
   });
@@ -44,9 +54,16 @@ const addSuccessfulCatch = (e) => {
     if (e.target.id === `successfulCatchBtn-${bear.id}`) {
       // eslint-disable-next-line no-param-reassign
       bear.catches += 1;
+      // eslint-disable-next-line no-param-reassign
+      bear.catchDate = getDate();
+      // eslint-disable-next-line no-param-reassign
+      bear.catchTime = getTime();
       river(bears);
+      compareCatches(bears);
     }
   });
 };
 
-export { addBearToArray, addCatchAttempt, addSuccessfulCatch };
+export {
+  addBearToArray, addCatchAttempt, addSuccessfulCatch
+};
