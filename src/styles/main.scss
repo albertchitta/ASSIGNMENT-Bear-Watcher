@@ -2,8 +2,10 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
 body {
-  background-color: rgb(240, 235, 235);
   justify-content: center;
+  background-image: url("/bearsBackground.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 #jumbotron {
@@ -27,23 +29,76 @@ body {
   color: red;
 }
 
+#awardContainer,
+#riverContainer {
+  margin: 32px auto 32px auto;
+  justify-content: center;
+  max-width: 85rem;
+  background-color: #e9ecefdd;
+  border-radius: 10px;
+}
+
+#award-title,
+#river-title {
+  text-align: center;
+  font-size: 40px;
+  text-decoration: underline;
+}
+
 #fattestBear, #river {
-  border: solid 2px black;
   display: flex;
   flex-wrap: wrap;
-  margin: 32px auto;
+  margin: 8px auto 32px auto;
   justify-content: center;
   max-width: 85rem;
 }
 
-.bear-card {
-  margin: 5px;
+.fattest-bear-card {
+  margin: 10px;
   border-radius: 10px;
+}
+
+.gold-trophy { 
+  color: yellow;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 50px;
+}
+
+.silver-trophy {
+  color: lightgray;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 50px;
+}
+
+.bronze-trophy {
+  color: #cd7f32;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 50px;
+}
+
+.fa-trophy {
+  text-shadow: 0px 0px 5px black;
+}
+
+.river-card {
+  margin: 10px;
+  border-radius: 5px;
 }
 
 .bear-img {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  border-radius: 10px 10px 0 0;
+  border-radius: 5px 5px 0 0;
+  position: relative;
+}
+
+.river-buttons {
+  margin: 5px;
 }
