@@ -1,7 +1,6 @@
 import river from '../../components/river';
 import { nameErrorMessage, urlErrorMessage } from '../errorMessage';
 import { getDate, getTime } from '../date';
-// import fattestBear from '../../components/fattestBear';
 import compareCatches from '../compareCatches';
 import bears from './bears';
 
@@ -45,6 +44,7 @@ const addCatchAttempt = (e) => {
       // eslint-disable-next-line no-param-reassign
       bear.attemptTime = getTime();
       river(bears);
+      compareCatches(bears);
     }
   });
 };

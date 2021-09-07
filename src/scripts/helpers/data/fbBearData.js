@@ -1,4 +1,4 @@
-// API CALLS FOR AUTHORS
+// API CALLS
 import axios from 'axios';
 import firebaseConfig from '../../../api/apiKeys';
 
