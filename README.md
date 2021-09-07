@@ -1,107 +1,69 @@
-# Webpack Intro
+# Bear Watcher  [![Netlify Status](https://api.netlify.com/api/v1/badges/b56344c7-89d5-473e-ac77-e45eb7953062/deploy-status)](https://app.netlify.com/sites/awc-bear-watcher/deploys)
+<!-- update the netlify badge above with your own badge that you can find at netlify under settings/general#status-badges -->
 
-[See Live Demo of this Template](https://webpack-5-template.netlify.app)
+Each year between July and September brown bears in the Katmai National Park congregate along the Brooks River. This river is one of the main rivers that Sockeye Salmon swim up to spawn. The brown bears wait in the shallows of the river and catch the salmon as they jump over rocks.
 
-Webpack is a task runner and a module bundler. It originally started as a module bundler. This means that it takes all of your separate Javascript modules and bundles them together into a single file. Webpack also automates some of the tasks that we have to run every time we change the code. It will automate these tasks so that we are not typing in the same commands every single time.
+[View App](https://awc-bear-watcher.netlify.app/)
 
-## Topics
-- [Get Started](#get-started)
-- [Starting the Project](#starting-the-project)
-- [Other important tidbits](#other-important-tidbits)
-    - [Console messages](#console-messages)
-    - [Including images with webpack](#including-images-with-webpack)
-    - [Importing CSS](#importing-cssscss)
-    - [Using axios](#using-axios)
-    - [Deploying on Netlify](#deploying-on-netlify)
-___
-
-## Get Started
-
-### Use Template
-#### 1. To get started, click the GREEN "Use this Template" button at the top of the repo
-![Use this Template](./documentation/usetemplate.png)
-
-#### 2. Make sure YOUR github account is selected in the dropdown and name your project
-![Create Project](./documentation/createproject.png)
-
-3. Clone your new repo to your local machine
-4. Go to the **NEXT** section
-
-## Starting the Project
-1. Open the `package.json` file and change the `name` property to the name of your application, and `author` to  your name.
-1. Rename the `.sample.env` file to `.env` file. The final file name should be `.env`
-1. From your command line, be in the root directory and run `npm install` OR `npm i` for short.
-1. To start your application, run `npm start`
-
-### If you see this, you are set to go!
-![LIT](./documentation/lit-screen.png)
-
-**NOTES:** 
-- Changes you make to the project will make the browser reload on save...no more hard refresh unless something goes wrong.
-- You will no longer be using the `hs -o` command. To start your server, you will run `npm start`
-
-## Other Important Tidbits
-### Console messages
-From this time forward, you will be expected to have a clean console in order for your assignments to be approved. This means that the use of `console.log` is acceptable **_(debugger is WAY better though)_** while developing, but will throw an error in your console like the image below, but all `logs` will have to be removed. You may use `console.error` and `console.warn` in your code however for messages. These need to all be removed before pushing to production unless they contain vital info for the user/developer.
-
-![not acceptable](./documentation/notacceptable.png)
-
-### Including Images with Webpack
-If you have a folder of local images that you want to load into your code things get a little strange with webpack.  Remember the only way webpack knows about assets is if they are imported into your javascript files.  Even our CSS is not added until those files are imported into our javascript files.  Below is some sample code for how to load a local image file into your project
-
-```js
-import cat from './assets/cat.jpg';
-
-let domString = `<img src=${cat} alt="picture of a cat"/>`;
-
-document.getElementById('cat').innerHTMl = domString;
+## Get Started <!-- OPTIONAL, but doesn't hurt -->
 ```
+$ git clone git@github.com:albertchitta/ASSIGNMENT-Bear-Watcher.git
+$ cd ASSIGNMENT-Bear-Watcher
+```
+## About the User <!-- This is a scaled down user persona -->
+- The ideal users for this site are scientists and park rangers who can use it to track these bears.
 
-### Importing CSS/SCSS
-**NOTE:** We will be using SCSS files. They are used the same way your CSS files work, with some added benefits that we will discuss later.
+## Features <!-- List your app features using bullets! Do NOT use a paragraph. No one will read that! -->
+- The DOM will populate a welcome message, followed by a form to enter a bear name and image url for a new bear.
+- The DOM will then populate with a card of bears from the array.
+- Catch Attempt: A button is used to track the number of catch attempts with a time stamp.
+- Successful Catches: A button is used to track the number of successful catches with a time stamp.
+- Fattest Bear Award: Each year in early september one bear is awarded the Fattest Bear award. This award goes to the bear who gains the most weight between July and September.
 
-Since Webpack is making the connection to the JS and CSS for us and we are no longer manually adding links or script tags to our HTML, we have to get our styles to the application some way...
+## Video Walkthrough of Pet Adoption <!-- A loom link is sufficient -->
+https://www.loom.com/share/c8d85532094a4b48b69199ee2a240804
 
-Here is how we add our styles using webpack:
+## Relevant Links <!-- Link to all the things that are required outside of the ones that have their own section -->
+- [Check out the deployed site](https://awc-bear-watcher.netlify.app/)
+- [Wireframes](https://docs.google.com/presentation/d/1xfyJoZR861Rw7ccNEUxngXu3uQCGCHBLfsZA_yL6W2U/edit?usp=sharing)
+- [Project Board](https://github.com/albertchitta/ASSIGNMENT-Bear-Watcher/projects/1)
 
-```js
-import '../styles/main.scss';
+## Code Snippet <!-- OPTIONAL, but doesn't hurt -->
+This function compares the number of successfully caught fishes between the bears, sorting them from highest to lowest.
+```
+const compareCatches = (array) => {
+  const sortedArray = array.slice().sort((a, b) => b.catches - a.catches);
 
-const init = () => {
-  document.querySelector('#app').innerHTML = '<h1>HELLO! You are up and running!</h1>');
-  console.log('YOU ARE UP AND RUNNING!');
+  const awardedBears = [];
+
+  for (let i = 0; sortedArray[i].catches > 0 && i < 3; i += 1) {
+    if (i === 0) {
+      sortedArray[i].award = 'gold';
+      awardedBears.push(sortedArray[i]);
+    }
+    if (i === 1) {
+      sortedArray[i].award = 'silver';
+      if (sortedArray[i].catches === sortedArray[i - 1].catches) {
+        sortedArray[i].award = 'gold';
+      }
+      awardedBears.push(sortedArray[i]);
+    }
+    if (i === 2) {
+      sortedArray[i].award = 'bronze';
+      if (sortedArray[i].catches === sortedArray[i - 1].catches || sortedArray[i - 1].award === 'gold') {
+        sortedArray[i].award = 'silver';
+      }
+      awardedBears.push(sortedArray[i]);
+    }
+
+    fattestBear(awardedBears);
+  }
 };
-
-init();
 ```
 
-### Using Axios
-> For every file you will need to make an XHR request in, you will need to require Axios
-```js
-import axios from 'axios';
+## Project Screenshots <!-- These can be inside of your project. Look at the repos from class and see how the images are included in the readme -->
+![Bear_Watcher_Overview](https://user-images.githubusercontent.com/83558122/132269631-32e3bf2f-ca14-4c15-b97b-efc7c2b86306.PNG)
+![Bear_Watcher_River](https://user-images.githubusercontent.com/83558122/132269658-d1a57fad-ea85-4f96-a429-2d6676e50447.PNG)
 
-const examplePromise = () => {
-  axios.get('http://localhost:3001/example')
-    .then((data) => {
-      console.warn(data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-});
-```
-
-### Deploying on Netlify
-
-- Build Command: `npm run build`
-- Publish directory: `dist`
-- Add Environmental Variables (NOT REQUIRED for Apps that do not use API Keys, etc)
-    - Any Enviromental variables you are using in your `.env` file should be added to Netlify. 
-        - Go to Site settings > Build & deploy > Environment > Environment variables and the keys and values there.
-
-- Update Firebase URL Settings
-    - In Firebase under Authentication select sign in methods, scroll to Authorized domains. Add your Netlify URL.
-        
-## More Info and Resources on Webpack
-- Visit the [Webpack documentation](https://webpack.js.org/concepts/) if you want to explore more.
-- [Info on our Webpack Config](https://github.com/nss-nightclass-projects/Night-Class-Resources/blob/master/book-2-patterns-and-tools/chapters/webpack-configure.md)
+## Contributors
+- [Albert Chittaphong](https://github.com/albertchitta)
