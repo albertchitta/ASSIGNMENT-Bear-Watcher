@@ -4,8 +4,6 @@ import { getDate, getTime } from '../date';
 import compareCatches from '../compareCatches';
 import bears from './bears';
 
-// const bears = [];
-
 const addBearToArray = (e) => {
   if (e.target.id === 'submitBtn') {
     const bearName = document.querySelector('#inputBearName');
@@ -13,7 +11,7 @@ const addBearToArray = (e) => {
 
     if (bearName.value && bearUrl.value) {
       bears.push({
-        id: bears.length,
+        id: bears.length + 1,
         name: bearName.value,
         url: bearUrl.value,
         attempts: 0,

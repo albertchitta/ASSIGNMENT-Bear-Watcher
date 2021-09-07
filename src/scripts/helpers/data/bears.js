@@ -109,7 +109,6 @@ const bears = [
     catchDate: 'No data',
     catchTime: ' this time'
   }
-
 ];
 
 export default bears;
