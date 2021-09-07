@@ -20,8 +20,8 @@ $ cd ASSIGNMENT-Bear-Watcher
 - Successful Catches: A button is used to track the number of successful catches with a time stamp.
 - Fattest Bear Award: Each year in early september one bear is awarded the Fattest Bear award. This award goes to the bear who gains the most weight between July and September.
 
-## Video Walkthrough of Pet Adoption <!-- A loom link is sufficient -->
-https://www.loom.com/share/c8d85532094a4b48b69199ee2a240804
+## Video Walkthrough of Bear Watcher <!-- A loom link is sufficient -->
+https://www.loom.com/share/ee9a427632d64b2c925d6337baf486d4
 
 ## Relevant Links <!-- Link to all the things that are required outside of the ones that have their own section -->
 - [Check out the deployed site](https://awc-bear-watcher.netlify.app/)
